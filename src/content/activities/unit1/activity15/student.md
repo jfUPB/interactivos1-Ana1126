@@ -17,7 +17,7 @@ Esta actividad fue bastante interesante ya que fue la primera parte en la que en
 y desde ahí empezar a hacer cambios y experimentar con el mismol. La idea de realizar este tipo de imágenes cambio ciertos parámetros me 
 resulta bastante divertido.  
 
-####Actividad 10: 
+#### Actividad 10: 
 En esta actividad también tuve la oportunidad de acercarme al código y entender como funciona y que es lo que realmente hace cada uno de los 
 parámetros. Estos puntos no son tan complejos ya que la mayoria tienen de base el mismo código, lo interesante y retante es entender el 
 código para poder cambiar parámetros como queramos y saber que es lo que estamos haciendo y por qué reacciona de esa manera.  
