@@ -15,8 +15,30 @@ del usuario mediante el botón A.
 ### Vectores de Prueba
 Para verificar que el programa funciona correctamente, probaremos distintos escenarios con eventos y observaremos el comportamiento esperado.
 
-  ## Vector de Prueba                ## Condición Inicial                ## Evento        ## Estado Esperado      ## Resultado Obtenido
-Prueba 1 - Secuencia Normal     Estado: HAPPY, sin presionar botón      Esperar 1.5s           SMILE                      Pasa
-Prueba 2 - Interrupción con      Estado: HAPPY, presionar botón A    Presión de botón A         SAD                       Pasa
-       Botón A  
-Prueba 3 - Botón A en SAD         Estado: SAD, presionar botón A     Presión de botón A        SMILE                      Pasa
+- Vector de Prueba:            
+-Prueba 1 - Secuencia Normal   
+-Prueba 2 - Interrupción con Botón A  
+-Prueba 3 - Botón A en SAD  
+
+- Condicion inical:  
+-Estado: HAPPY, sin presionar botón  
+-Estado: HAPPY, presionar botón A  
+-Estado: SAD, presionar botón A  
+
+- Evento:  
+-Esperar 1.5s  
+-Presión de botón A    
+-Presión de botón A  
+
+- Estado Esperado:  
+-SMILE  
+-SAD  
+-SMILE  
+
+- Resultado Obtenido:  
+-Pasa  
+-Pasa  
+-Pasa  
+
+
+
