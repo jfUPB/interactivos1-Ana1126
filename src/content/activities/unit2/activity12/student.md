@@ -4,49 +4,64 @@
 ````
 from microbit import *
 import utime
+import music
 
-# Definir estados
-CONFIG_MODE = 0
-COUNTDOWN = 1
-EXPLODE = 2
+CONFIGURACION = 0
+ARMADO = 1
+EXPLOSION = 2
 
-# Variables
-current_state = CONFIG_MODE
-countdown_time = 20  # Tiempo inicial en segundos
-start_time = 0
+estado = CONFIGURACION
+contador = 20
+ultimo_tiempo = utime.ticks_ms()
 
-# Límites del temporizador
-MIN_TIME = 10
-MAX_TIME = 60
+def actualizar_display(tiempo):
+    display.show(str(tiempo))
+
+def explotar():
+    display.show(Image.SKULL)
+    music.play(music.POWER_DOWN)
+    sleep(1000)
+    display.clear()
 
 while True:
-    if current_state == CONFIG_MODE:
-        display.show(str(countdown_time % 10))  # Muestra solo la última cifra
-        
-        if button_a.was_pressed() and countdown_time < MAX_TIME:
-            countdown_time += 1
-        elif button_b.was_pressed() and countdown_time > MIN_TIME:
-            countdown_time -= 1
-        elif accelerometer.was_gesture("shake"):  # ARMED - Iniciar cuenta regresiva
-            start_time = utime.ticks_ms()
-            current_state = COUNTDOWN
+    if estado == CONFIGURACION:
+        display.scroll("Config")
+        actualizar_display(contador)
 
-    elif current_state == COUNTDOWN:
-        remaining_time = countdown_time - (utime.ticks_diff(utime.ticks_ms(), start_time) // 1000)
-        display.show(str(remaining_time % 10))  # Muestra solo la última cifra
-        
-        if remaining_time <= 0:
-            current_state = EXPLODE
+        if button_a.was_pressed():
+            if contador < 60:
+                contador += 1
+                actualizar_display(contador)
 
-    elif current_state == EXPLODE:
-        display.show(Image.SKULL)  # Explosión visual
-        for _ in range(5):
-            
-            utime.sleep_ms(200)
-        
-        if pin_logo.is_touched():  # RESET
-            countdown_time = 20
-            current_state = CONFIG_MODE
+        if button_b.was_pressed():
+            if contador > 10:
+                contador -= 1
+                actualizar_display(contador)
+
+        if accelerometer.was_gesture("shake"):
+            estado = ARMADO
+            display.scroll("Armed")
+            ultimo_tiempo = utime.ticks_ms()
+
+    elif estado == ARMADO:
+        tiempo_actual = utime.ticks_ms()
+        if tiempo_actual - ultimo_tiempo >= 1000:
+            ultimo_tiempo = tiempo_actual
+            if contador > 0:
+                contador -= 1
+                actualizar_display(contador)
+            else:
+                estado = EXPLOSION
+
+    elif estado == EXPLOSION:
+        explotar()
+
+        while not pin_logo.is_touched():
+            sleep(100)
+
+        estado = CONFIGURACION
+        contador = 20
+        display.scroll("Reset")
 ````
 
 ### Enlace (video)  
