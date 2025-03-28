@@ -50,4 +50,4 @@ Funciones principales utilizadas en p5.js
 - Color más vibrante: Se aumentó la saturación y el brillo en stroke(), creando un efecto más colorido.
 - Efecto de oscilación: Se añadió sin(frameCount * 0.05), que hace que las curvas se muevan ligeramente con el tiempo.
 - Curvas más dinámicas: Se cambió la distribución de las líneas Bézier para que tengan una variación más marcada en la curvatura.  
-https://editor.p5js.org/
+[https://editor.p5js.org/](https://editor.p5js.org/hannah26/sketches/wWigqOTOV)
