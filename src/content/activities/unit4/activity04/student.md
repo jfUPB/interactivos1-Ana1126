@@ -4,10 +4,10 @@ Una de las primeras diferencias que noto es que el código original contiene muc
 
 Después viene la parte relacionada con la comunicación serial. Los datos se envían mediante esta línea:
 
-python  
-Copiar  
-Editar  
-``data = "{},{},{},{}\n".format(xValue, yValue, aState, bState)``
+````python   
+data = "{},{},{},{}\n".format(xValue, yValue, aState, bState)
+````
+
 Esta estructura organiza los cuatro datos en posiciones específicas dentro de la cadena de texto. Cada valor se separa por comas y se representa en formato ASCII. El salto de línea \n indica el final del conjunto de datos. Si por algún motivo no se reciben correctamente los cuatro datos, el programa intentará procesar lo que haya recibido, lo que puede provocar errores en el funcionamiento general.
 
 El uso de windowWidth/2 y windowHeight/2 sirve para centrar los valores en la pantalla, ya que el punto (0,0) en p5.js se encuentra en la esquina superior izquierda. Sin este ajuste, los elementos aparecerían alineados hacia esa esquina.
